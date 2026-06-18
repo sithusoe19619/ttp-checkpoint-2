@@ -29,6 +29,10 @@ function SectionA() {
   // A1.
   // Declare a variable called myName and assign it your first name as a string.
   // Declare a variable called myCity and assign it the city you are from.
+  const myName = "Sithu"
+  let myCity = "New York City"
+
+  console.log(myName , myCity)
 
 
   // A2.
@@ -57,12 +61,17 @@ function SectionA() {
   //          Why do you need curly braces to embed a variable's value?
   //
   //          answer:
+  //          JSX is a syntax used in React that lets us write HTML like code inside JS. It is different from plain HTML because JSX can use JS variables, values, and expressions.
+  //          Curly braces are needed because they tell React to run JS inside the JSX instead of treating it like regular text.
 
+  const sum = 25 + 17
   return (
     <div>
       <h2>Section A — JSX Basics</h2>
       {/* Your output goes below this line */}
-
+      <p>{myName.toUpperCase()} , {myName.length}</p>
+      <p>{myCity}</p>
+      <p>25 + 17 = {sum}</p>
     </div>
   )
 }
@@ -86,6 +95,18 @@ function SectionA() {
 //     (href="#" is fine — we are not building real links yet)
 //
 // Write PageHeader here:
+function PageHeader() {
+  return(
+    <header>
+      <h1>My React App</h1>
+      <nav>
+        <a>Home</a>
+        <a>About</a>
+        <a>Contact</a>
+      </nav>
+    </header>
+  )
+}
 
 
 // B2.
@@ -93,6 +114,13 @@ function SectionA() {
 // It should return a <footer> element with a <p> that says "2026 TTP".
 //
 // Write PageFooter here:
+function PageFooter() {
+  return(
+    <footer>
+      <p>2026 TTP</p>
+    </footer>
+  )
+}
 
 
 function SectionB() {
@@ -105,13 +133,17 @@ function SectionB() {
   //          writing everything inside one big function?
   //
   //          answer:
+  //          A React component is a reusable function that returns JSX to show something on the page.
+  //          We split UI into separate components so the code is easier to read, organize, reuse, 
+  //          and update instead of putting everything inside of putting everything inside one big function.
 
 
   return (
     <div>
       <h2>Section B — Your Own Components</h2>
       {/* Render your components below */}
-
+      <PageHeader />
+      <PageFooter />
     </div>
   )
 }

@@ -47,19 +47,31 @@ function SectionA() {
   // EXPLAIN: Why does React require a key prop on each list item?
   //          What happens if two items share the same key?
   //
-  //          answer:
+  //          answer: React needs a key prop so it can tell each list item apart when the list changes.
+  //                  The key helps React know which item was added, removed, or updated.
+  //                  If two items share the same key, React can get confused and update the 
+
+  let  result = players.filter((eachPlayer) => eachPlayer.score > 30)
 
   return (
     <div>
       <h2>Section A — Rendering a List</h2>
       <h3>All Players</h3>
       <ul>
-        {/* A1: map players here: */}
-
+        {
+          players.map((eachPlayer) => (
+            <li key={eachPlayer.id}>{eachPlayer.name}-{eachPlayer.score}</li>
+          ))
+        }
       </ul>
 
-      {/* A2: filtered list goes here: */}
-
+      <ul>
+        {
+          result.map((aboveThirty) =>
+            <li key={aboveThirty.id}> {aboveThirty.name} - {aboveThirty.score}</li>
+          )
+        }
+      </ul>
     </div>
   )
 }
@@ -79,7 +91,15 @@ function SectionA() {
 // It should accept props and display a player's name and score inside a <div>.
 //
 // Write PlayerRow here:
+function PlayerRow(props) {
 
+  return(
+    <div>
+      {props.playerRow.name}-{props.playerRow.score}
+    </div>
+  )
+  
+}
 
 
 function SectionB() {
@@ -94,17 +114,21 @@ function SectionB() {
   // EXPLAIN: What is the advantage of rendering a component inside .map()
   //          compared to mapping to a plain HTML element like <li>?
   //
-  //          answer:
+  //          answer: Rendering a component inside .map() keeps the code cleaner and easier to reuse.
+  //                  The component can control how each item looks, so the map only decides which items to render.
+  //                  This is better than putting all the JSX directly inside the map.
 
   return (
     <div>
       <h2>Section B — Lists and Components</h2>
-      {/* B2: map PlayerRow components here */}
-
+      {
+        players.map((player) => (
+          <PlayerRow key={player.id} playerRow={player}/>
+        ))
+      }
     </div>
   )
 }
-
 
 // ------------------------------------------------------------
 // Do not edit below this line.
